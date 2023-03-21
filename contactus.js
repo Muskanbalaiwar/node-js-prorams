@@ -4,24 +4,12 @@ const express=require('express');
 
 const router=express.Router();
 
+const productsController = require('../controllers/product')
 
 
+router.get('/contactus',productsController.contactUs)
 
-router.get('/contactus',(req,res,next)=>{
-
-    console.log('Inside the  us Middleware');
-    res.sendFile(path.join(__dirname,'../','views','contactDes.html'))
-   
-    
-})
-
-router.get('/success',(req,res,next)=>{
-
-    console.log('Inside the  success Middleware');
-    res.sendFile(path.join(__dirname,'../','views','success.html'))
-   
-  
-})
+router.get('/success',productsController.success)
 
 
 
