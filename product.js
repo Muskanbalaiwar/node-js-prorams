@@ -1,4 +1,4 @@
-const products=[];
+const product= require('../models/products')
 const path =require('path')
 
 exports.getAddProduct=(req,res,next)=>{
@@ -8,13 +8,22 @@ exports.getAddProduct=(req,res,next)=>{
 
 
 exports.postAddProducts=(req,res,next)=>{
-
-products.push({title:req.body.title});
+const pros=new product(req.body.title);
+//console.log(req.body.title);
+pros.save();
 res.redirect('/')
 }
 
 exports.getProduct=(req,res,next)=>{
+   product.fetchAll(products=>{
+    console.log(products)
+    //res.write(`<body>${products}</body>`)
     res.sendFile(path.join(__dirname,'../','views','shop.html'))
+    
+   });
+
+  
+   
 }
 
 exports.contactUs=(req,res,next)=>{
